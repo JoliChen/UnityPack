@@ -1,2 +1,6 @@
-
 .DS_Store
+setup.txt
+files.txt
+build/
+dist/
+unitypack.egg-info/
