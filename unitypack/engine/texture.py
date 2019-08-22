@@ -157,7 +157,6 @@ class Texture2D(Texture):
 	@property
 	def image(self):
 		from PIL import Image
-		from decrunch import File as CrunchFile
 
 		if self.format not in IMPLEMENTED_FORMATS:
 			raise NotImplementedError("Unimplemented format %r" % (self.format))
@@ -180,6 +179,7 @@ class Texture2D(Texture):
 
 		data = self.image_data
 		if self.format in (TextureFormat.DXT1Crunched, TextureFormat.DXT5Crunched):
+			from decrunch import File as CrunchFile
 			data = CrunchFile(self.image_data).decode_level(0)
 
 		# Pillow wants bytes, not bytearrays
